@@ -1,24 +1,35 @@
 // Créer une liste d'articles préselectionnés avec leurs quantités
 var items = [
   {
-    name: "Item 1",
-    price: 10,
-    quantity: 1,
-    image: "./img/987ca2af.webp",
+    img: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e777c881-5b62-4250-92a6-362967f54cca/air-force-1-07-womens-shoes-b19lqD.png",
+    name: "Nike Air Force 1",
+    quantity: 2,
+    price: 900,
   },
   {
-    name: "Item 2",
-    price: 20,
-    quantity: 1,
-    image: "./img/bff3c1c2.webp",
+    img: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e777c881-5b62-4250-92a6-362967f54cca/air-force-1-07-womens-shoes-b19lqD.png",
+    name: "Nike Air Force 1",
+    quantity: 2,
+    price: 110,
   },
   {
-    name: "Item 3",
-    price: 15,
-    quantity: 1,
-    image: "./img/f9645056.webp",
+    img: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e777c881-5b62-4250-92a6-362967f54cca/air-force-1-07-womens-shoes-b19lqD.png",
+    name: "Nike Air Force 1",
+    quantity: 2,
+    price: 110,
   },
-  { name: "Item 4", price: 15, quantity: 1, image: "./img/nike.png" },
+  {
+    img: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e777c881-5b62-4250-92a6-362967f54cca/air-force-1-07-womens-shoes-b19lqD.png",
+    name: "Nike Air Force 1",
+    quantity: 2,
+    price: 110,
+  },
+  {
+    img: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e777c881-5b62-4250-92a6-362967f54cca/air-force-1-07-womens-shoes-b19lqD.png",
+    name: "Nike Air Force 1",
+    quantity: 2,
+    price: 110,
+  },
 ];
 
 // Récupérer l'élément du panier dans le DOM
@@ -30,12 +41,12 @@ items.forEach(function (item) {
   itemElement.classList.add("item");
 
   // Créer l'élément pour afficher le nom de l'article
-  var nameElement = document.createElement("span");
+  var nameElement = document.createElement("h3");
   nameElement.textContent = item.name;
   itemElement.appendChild(nameElement);
 
   // Créer les boutons "+" et "-" pour ajuster la quantité de l'article
-  var quantityElement = document.createElement("span");
+  var quantityElement = document.createElement("p");
   quantityElement.textContent = "Quantity: " + item.quantity;
   itemElement.appendChild(quantityElement);
 
@@ -60,7 +71,8 @@ items.forEach(function (item) {
   itemElement.appendChild(decreaseButton);
 
   var ProductImage = document.createElement("img");
-  ProductImage.setAttribute("src", item.image);
+  // ProductImage.setAttribute("src", item.image);
+  ProductImage.setAttribute("src", item.img);
   ProductImage.setAttribute("class", "ProductImage");
   itemElement.appendChild(ProductImage);
 
@@ -101,7 +113,7 @@ function updateTotalPrice() {
   var totalPrice = items.reduce(function (total, item) {
     return total + item.price * item.quantity;
   }, 0);
-  var totalPriceElement = document.getElementById("total-price");
+  var totalPriceElement = document.getElementById("cart-total");
   totalPriceElement.textContent = "Total Price: $" + totalPrice;
 }
 
